@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DayFourTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-13T16:03:30" hostname="mcr-al36317.at.autotrader.co.uk" time="0.288">
-  <properties/>
-  <testcase name="findInputs" classname="DayFourTest" time="0.288"/>
-  <system-out><![CDATA[5208
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
