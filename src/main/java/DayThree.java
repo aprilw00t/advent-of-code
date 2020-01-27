@@ -4,7 +4,9 @@ import java.util.List;
 
 public class DayThree {
     public    List<String>  opcodeProgram(String listOfCodes) {
+        //name?
         Integer numberToCheck = 0;
+        //Choice of list type?
         List<String> resultList = Arrays.asList(listOfCodes.split(","));
 
        while(numberToCheck<resultList.size()){
@@ -14,6 +16,7 @@ public class DayThree {
         else{
             if(resultList.get(numberToCheck).equals("1"))
             {
+                //valueOf vs parse plus duplication
                int position = Integer.valueOf(resultList.get(numberToCheck+3));
                Integer firstNumberToAdd = Integer.valueOf(resultList.get(Integer.valueOf(resultList.get(numberToCheck+1))));
                 Integer secondNumberToAdd = Integer.valueOf(resultList.get(Integer.valueOf(resultList.get(numberToCheck+2))));
@@ -22,9 +25,11 @@ public class DayThree {
                 resultList.set(position, numberToAdd);
             }
             else{
+                //ever false?
                 if(resultList.get(numberToCheck).equals("2"))
                 {
                     int position = Integer.valueOf(resultList.get(numberToCheck+3));
+                    //naming
                     Integer firstNumberToAdd = Integer.valueOf(resultList.get(Integer.valueOf(resultList.get(numberToCheck+1))));
                     Integer secondNumberToAdd = Integer.valueOf(resultList.get(Integer.valueOf(resultList.get(numberToCheck+2))));
                     String numberToAdd = String.valueOf(firstNumberToAdd*secondNumberToAdd);
@@ -33,7 +38,7 @@ public class DayThree {
                 }
             }
 
-
+        //indentation
         }
            numberToCheck = numberToCheck + 4;
 

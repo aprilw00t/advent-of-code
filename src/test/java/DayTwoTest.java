@@ -2,6 +2,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+//choice of test data?
 public class DayTwoTest {
     DayTwo dayTwo;
     @Before
@@ -19,6 +20,8 @@ public class DayTwoTest {
         Assertions.assertThat(dayTwo.getFuel("400")).isEqualTo(184);
 
     }
+
+    //naming?
     @Test
     public void givenMoreThanOneBiggerNumber_withMultipleNumbers_CalculatesFuel(){
         Assertions.assertThat(dayTwo.getFuel("9\n9\n9\n9\n9\n9\n9\n9\n9\n9")).isEqualTo(10);
