@@ -5,7 +5,7 @@ import java.util.List;
 public class DayFour {
     public String findInputs(Integer total, String listOfCodes) {
         List<String> codesList = Arrays.asList(listOfCodes.split(","));
-String toCheck;
+        String toCheck;
         String result = "";
         ArrayList<String> replacementNumbers = new ArrayList<>();
         DayThree dayThree = new DayThree();
@@ -15,11 +15,11 @@ String toCheck;
                 codesList.set(1, String.valueOf(noun));
                 codesList.set(2, String.valueOf(verb));
                 toCheck = dayThree.opcodeProgram(codesList.toString().replace(" ", "").replaceAll("\\[", "").replace("]", "")).get(0);
-          if(toCheck.equals(total.toString())){
-              return String.valueOf((noun*100) + verb);
-          }
+                if (toCheck.equals(total.toString())) {
+                    return String.valueOf((noun * 100) + verb);
+                }
             }
         }
-return result;
+        return result;
     }
 }

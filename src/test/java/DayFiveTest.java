@@ -4,35 +4,36 @@ import org.junit.Test;
 
 public class DayFiveTest {
     DayFive dayFive;
+
     @Before
-    public void setUp(){
+    public void setUp() {
         dayFive = new DayFive();
     }
+
     @Test
-    public void returnsTwo(){
-//        dayFive.findCrossedPaths("R75,D30,R83,U83,L12,D49,R71,U7,L72 \nU62,R66,U55,R34,D71,R55,D58,R83");
-    }
-    @Test
-    public void checksUpwardsInstruction(){
-dayFive.findTheVectors("U75,R83,R83,L12,R71,R7,L72");
+    public void checksUpwardsInstruction() {
+        dayFive.findTheVectors("U75,R83,R83,L12,R71,R7,L72");
         Assertions.assertThat(dayFive.verticalEnd).isEqualTo(75);
     }
+
     @Test
-    public void checksDownwardsInstruction(){
+    public void checksDownwardsInstruction() {
         dayFive.findTheVectors("U75,D30");
         Assertions.assertThat(dayFive.verticalEnd).isEqualTo(45);
         Assertions.assertThat(dayFive.verticalStart).isEqualTo(75);
     }
+
     @Test
-    public void checksLeftInstruction(){
+    public void checksLeftInstruction() {
         dayFive.findTheVectors("U75,D30,R83,L12,L2");
         Assertions.assertThat(dayFive.horizontalStart).isEqualTo(71);
         Assertions.assertThat(dayFive.horizontalEnd).isEqualTo(69);
         Assertions.assertThat(dayFive.verticalEnd).isEqualTo(45);
         Assertions.assertThat(dayFive.verticalStart).isEqualTo(45);
     }
+
     @Test
-    public void checksRightInstruction(){
+    public void checksRightInstruction() {
         dayFive.findTheVectors("R83,R5");
         Assertions.assertThat(dayFive.verticalEnd).isEqualTo(0);
         Assertions.assertThat(dayFive.verticalStart).isEqualTo(0);
@@ -41,34 +42,37 @@ dayFive.findTheVectors("U75,R83,R83,L12,R71,R7,L72");
     }
 
     @Test
-    public void comparesHorizontalVectorsTrue(){
+    public void comparesHorizontalVectorsTrue() {
         dayFive.findTheVectors("U75");
-        int[] verticalArray = {-1, 1, 7,7};
-        int[] horizontalArray = {0, 75, 0,0};
+        int[] verticalArray = {-1, 1, 7, 7};
+        int[] horizontalArray = {0, 75, 0, 0};
         Assertions.assertThat(dayFive.doesItCross(horizontalArray, verticalArray)).isEqualTo(true);
     }
 
     @Test
-    public void comparesHorizontalVectorsFalse(){
+    public void comparesHorizontalVectorsFalse() {
         dayFive.findTheVectors("U75");
-        int[] verticalArray = {1, 6, 7,7};
-        int[] horizontalArray = {0, 75, 0,0};
+        int[] verticalArray = {1, 6, 7, 7};
+        int[] horizontalArray = {0, 75, 0, 0};
         Assertions.assertThat(dayFive.doesItCross(horizontalArray, verticalArray)).isEqualTo(false);
     }
 
     @Test
-    public void comparesVerticalVectorsTrue(){
+    public void comparesVerticalVectorsTrue() {
         dayFive.findTheVectors("U75");
-        int[] horizontalArray  = {-1, 1, 7,7};
-        int[] verticalArray = {0, 75,0, 0};
+        int[] horizontalArray = {-1, 1, 7, 7};
+        int[] verticalArray = {0, 75, 0, 0};
         Assertions.assertThat(dayFive.doesItCross(horizontalArray, verticalArray)).isEqualTo(true);
+        if (dayFive.doesItCross(horizontalArray, verticalArray)) {
+            dayFive.addCrossingWireDistancesToMap(horizontalArray, verticalArray);
+        }
     }
 
     @Test
-    public void comparesVerticalVectorsFalse(){
+    public void comparesVerticalVectorsFalse() {
         dayFive.findTheVectors("U75");
-        int[] horizontalArray = {0, 75,0, 0};
-        int[] verticalArray = {1, 6, 7,7};
+        int[] horizontalArray = {0, 75, 0, 0};
+        int[] verticalArray = {1, 6, 7, 7};
         Assertions.assertThat(dayFive.doesItCross(horizontalArray, verticalArray)).isEqualTo(false);
     }
 }

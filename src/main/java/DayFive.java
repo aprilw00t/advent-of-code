@@ -1,26 +1,20 @@
 
-
-import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DayFive {
     ArrayList<int[]> horizontalMinMax = new ArrayList<>();
     ArrayList<int[]> verticalMinMax = new ArrayList<>();
+    ArrayList<Integer> arrayOfDistances = new ArrayList<>();
     Integer horizontalStart = 0;
     Integer horizontalEnd = 0;
     Integer verticalStart = 0;
     Integer verticalEnd = 0;
-
 
     void findTheVectors(String Coords) {
 
 
         for (String instruction : Coords.split(",")
         ) {
-
             verticalStart = verticalEnd;
             horizontalStart = horizontalEnd;
 
@@ -39,11 +33,11 @@ public class DayFive {
                 int[] arrayToAdd = {horizontalStart, horizontalEnd, verticalStart, verticalEnd};
                 addToCorrectArray(arrayToAdd, horizontalMinMax);
 
-
             } else if (instruction.contains("R")) {
                 horizontalEnd += convertToInteger(instruction, "R");
                 int[] arrayToAdd = {horizontalStart, horizontalEnd, verticalStart, verticalEnd};
                 addToCorrectArray(arrayToAdd, horizontalMinMax);
+
             }
 
             System.out.println(horizontalStart + " " + horizontalEnd + "," + verticalStart + " " + verticalEnd);
@@ -58,17 +52,22 @@ public class DayFive {
 
     private Integer convertToInteger(String instruction, String l) {
         return Integer.valueOf(instruction.replaceAll("[^0-9.]", ""));
-        //return Integer.valueOf(instruction.replace(l, " ").replace(" ", ""));
     }
 
 
-    public boolean doesItCross(int[] vectorArrayToCheck, int[] vectorArrayToCheck2) {
-        int m = (vectorArrayToCheck2[0] + vectorArrayToCheck2[1]) / 2;
+    public boolean doesItCross(int[] vectorArrayToCheck, int[] vectorArrayToCheckFromList) {
+        int m = (vectorArrayToCheckFromList[0] + vectorArrayToCheckFromList[1]) / 2;
         int n = (vectorArrayToCheck[0] + vectorArrayToCheck[1]) / 2;
-        if ((Math.abs(vectorArrayToCheck[3] - m) <= (Math.abs(vectorArrayToCheck2[0] - m))) && (Math.abs(vectorArrayToCheck2[3] - n) <= (Math.abs(vectorArrayToCheck[0] - n)))) {
+        if ((Math.abs(vectorArrayToCheck[3] - m) <= (Math.abs(vectorArrayToCheckFromList[0] - m))) && (Math.abs(vectorArrayToCheckFromList[3] - n) <= (Math.abs(vectorArrayToCheck[0] - n)))) {
             return true;
         } else {
             return false;
         }
+    }
+
+    //if(doesItCross){}
+    public void addCrossingWireDistancesToMap(int[] vectorArrayToCheck, int[] vectorArrayToCheckFromList) {
+        arrayOfDistances.add(vectorArrayToCheck[3] + vectorArrayToCheckFromList[3]);
+        System.out.println(arrayOfDistances.toString());
     }
 }
